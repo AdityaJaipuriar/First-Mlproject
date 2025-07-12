@@ -3,6 +3,7 @@ from setuptools import find_packages,setup
 from typing import List
 
 minus_e_dot = "-e ."
+# -e . in requirements.txt because - It tells pip to install the package in editable mode, meaning changes to the source code will immediately reflect without needing to reinstall.
 
 def get_requirements(file_path:str)-> List[str]:
     '''This function will return a list of packages needed to downloaded'''
