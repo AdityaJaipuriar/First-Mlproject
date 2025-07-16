@@ -25,7 +25,6 @@ def predict_data():
             test_preparation_course=request.form.get('test_preparation_course'),
             math_score=request.form.get('math_score'),
             reading_score=request.form.get('reading_score'),
-            writing_score=request.form.get('writing_score'),
         )
         pred_df = data.getdata_as_DataFrame()
         print(pred_df)

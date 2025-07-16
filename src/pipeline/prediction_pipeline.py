@@ -28,7 +28,6 @@ class CustomData:
                  lunch:str,
                  test_preparation_course:str,
                  math_score:int,
-                 writing_score:int,
                  reading_score:int,):
         self.gender = gender
         self.race_ethnicity = race_ethnicity
@@ -37,7 +36,7 @@ class CustomData:
         self.test_preparation_course=test_preparation_course
         self.math_score=math_score
         self.reading_score = reading_score
-        self.writing_score=writing_score
+        
     
     def getdata_as_DataFrame(self):
         try:
@@ -48,7 +47,6 @@ class CustomData:
               "lunch":[self.lunch],
               "test_preparation_course":[self.test_preparation_course],
               "math_score":[self.math_score],
-              "writing_score":[self.writing_score],
               "reading_score":[self.reading_score]
             }
             return pd.DataFrame(custom_data_input_dict)
