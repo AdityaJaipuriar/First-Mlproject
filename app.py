@@ -3,6 +3,8 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from src.pipeline.prediction_pipeline import CustomData,PredictPipeline
+from src.exception import CustomException
+from src.logger import logging
 
 application = Flask(__name__)
 app = application
@@ -28,10 +30,13 @@ def predict_data():
         )
         pred_df = data.getdata_as_DataFrame()
         print(pred_df)
-
-        predict_pipeline=PredictPipeline()
-        results = predict_pipeline.predict(pred_df)
-        return render_template('home.html',results=results[0])
+        try:
+            predict_pipeline=PredictPipeline()
+            results = predict_pipeline.predict(pred_df)
+            return render_template('home.html',results=results[0])
+        except Exception as e:
+            logging.error(f"Prediction error: {str(e)}")
+            return "Something went wrong in prediction pipeline."
     
 if __name__=="__main__":
     app.run(host="0.0.0.0",debug=True)
